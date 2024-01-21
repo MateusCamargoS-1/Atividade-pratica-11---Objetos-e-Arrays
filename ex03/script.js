@@ -20,40 +20,39 @@
 // Nome: Alessandro, Idade: 28, Salário: 2700
 // Nome: Alessandro, Idade: 28, Salário: 3000
 
-let pessoas = [];
+const pessoas = [];
 let continuarCadastro;
 
 do {
-
     const pessoa = {
         nome: '',
         idade: 0,
         trabalhando: true,
         salario: 0,
-    }
+    };
 
-    pessoa.nome = prompt('Informe o seu nome: ');
-    pessoa.idade = parseInt(prompt('Informe sua Idade: '));
-    pessoa.trabalhando = confirm('Esta trabalhando?');
+    pessoa.nome = prompt('Informe seu nome: ');
+    pessoa.idade = parseInt(prompt('Informe a idade: '));
+    pessoa.trabalhando = confirm('Está trabalhando?');
 
-    if(pessoa.trabalhando) {
-        pessoa.salario = parseFloat(prompt('Qual o seu salario?'));
+    if (pessoa.trabalhando) {
+        pessoa.salario = parseFloat(prompt('Qual o salário?'));
     }
 
     pessoas.push(pessoa);
-    continuarCadastro = confirm('Continuar Cadastro?');
+    continuarCadastro = confirm('Deseja continuar cadastrando?');
 
-} while(continuarCadastro)
+} while (continuarCadastro);
 
 const desempregadas = pessoas.filter(pessoa => !pessoa.trabalhando);
-const menor2500 = pessoas.filter(pessoa => pessoa.trabalhando && pessoa.salario < 2500);
-const maior2500 = pessoas.filter(pessoa => pessoa.trabalhando && pessoa.salario >= 2500);
+const menos2500 = pessoas.filter(pessoa => pessoa.trabalhando && pessoa.salario < 2500);
+const mais2500 = pessoas.filter(pessoa => pessoa.trabalhando && pessoa.salario >= 2500);
 
-console.log('Pessoas Desempregadas:');
-desempregadas.forEach(pessoa => console.log(`Nome: ${pessoa.nome}, idade: ${pessoa.idade}`));
+document.write('Pessoas desempregadas:<br>');
+desempregadas.forEach(pessoa => document.write(`Nome: ${pessoa.nome}, Idade: ${pessoa.idade}<br>`));
 
-console.log('Pessoas empregadas com salários menores que 2500:');
-menor2500.forEach(pessoa => console.log(`Nome: ${pessoa.nome}, Idade: ${pessoa.idade}, Salário: ${pessoa.salario}`));
+document.write('<br>Pessoas empregadas com salários menores que 2500:<br>');
+menos2500.forEach(pessoa => document.write(`Nome: ${pessoa.nome}, Idade: ${pessoa.idade}, Salário: ${pessoa.salario} <br>`));
 
-console.log('Pessoa empregadas com salário maior que 2500:');
-maior2500.forEach(pessoa => console.log(`Nome: ${pessoa.nome}, Idade: ${pessoa.idade}, Salário: ${pessoa.salario}`));
+document.write('<br>Pessoas empregadas com salários maiores que 2500:<br>');
+mais2500.forEach(pessoa => document.write(`Nome: ${pessoa.nome}, Idade: ${pessoa.idade}, Salário: ${pessoa.salario}<br>`));
